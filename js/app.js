@@ -22,7 +22,9 @@
  * Define Global Variables
  * 
 */
-
+// variable to hold all the sections
+const navbar = document.querySelector('#navbar__list');
+const listOfSections = document.querySelectorAll('.landing__container');
 
 /**
  * End Global Variables
@@ -39,7 +41,27 @@
 */
 
 // build the nav
-
+// loop through the sections and add each to the navbar
+listOfSections.forEach( section => {
+  // retrieve the section's id
+  const sectionId = section.parentElement.getAttribute('id');
+  // retrieve the sections data-nav
+  const sectionName = section.parentElement.getAttribute('data-nav');
+  // create a list item
+  const listItem = document.createElement('li');
+  // create an anchor element
+  const listAnchor = document.createElement('a');
+  // set the anchor's text to the data-nav
+  listAnchor.text = sectionName;
+  // set the anchor's href to the id
+  listAnchor.href = sectionId;
+  // add the menu__link class
+  listAnchor.classList.add('menu__link');
+  // append the anchor to the list item
+  navbar.append(listItem);
+  // append the anchor to the list
+  listItem.append(listAnchor);
+})
 
 // Add class 'active' to section when near top of viewport
 
