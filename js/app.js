@@ -51,19 +51,51 @@ listOfSections.forEach( section => {
   const listItem = document.createElement('li');
   // create an anchor element
   const listAnchor = document.createElement('a');
-  // set the anchor's text to the data-nav
-  listAnchor.text = sectionName;
-  // set the anchor's href to the id
-  listAnchor.href = sectionId;
-  // add the menu__link class
-  listAnchor.classList.add('menu__link');
-  // append the anchor to the list item
-  navbar.append(listItem);
-  // append the anchor to the list
-  listItem.append(listAnchor);
-})
+    // set the anchor's text to the data-nav
+    listAnchor.text = sectionName;
+    // set the anchor's href to the id
+    listAnchor.setAttribute('href', '$("#sectionId")');
+    // add the menu__link class
+    listAnchor.classList.add('menu__link');
+    // append the anchor to the list item
+    navbar.append(listItem);
+    // add event listener, prevent default action, scroll section into view
+    listAnchor.addEventListener('click', event => {
+      event.preventDefault();
+      section.scrollIntoView({behavior: 'smooth'});
+    });
+    // append the anchor to the list
+    listItem.append(listAnchor);
+});
 
 // Add class 'active' to section when near top of viewport
+// event listener for scroll event
+window.addEventListener('click', function () {
+  listOfSections.forEach(section => {
+    const bounds = section.getBoundingClientRect();
+    const inViewport = bounds.top >= 0
+    && bounds.left > 0
+    && bounds.right <= window.innerWidth
+    && bounds.bottom <= window.innerHeight;
+
+    console.log(bounds);
+
+    if(section.bounds === inViewport) {
+      section.classList.add('active-section');
+      const anchorList = document.querySelectorAll('a');
+      anchorList.forEach(anchor => {
+      anchor = section.querySelector('a');
+      if(anchor.inViewport) {
+        anchor.classList.add('active-section')
+      } else {
+        anchor.classList.remove('active-section');
+      }
+      })
+    } else {
+      section.classList.remove('active-section');
+    }
+  })
+})
 
 
 // Scroll to anchor ID using scrollTO event
