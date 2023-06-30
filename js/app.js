@@ -25,6 +25,7 @@
 // variable to hold all the sections
 const navbar = document.querySelector('#navbar__list');
 const listOfSections = document.querySelectorAll('.landing__container');
+const anchorList = document.querySelectorAll('a');
 
 /**
  * End Global Variables
@@ -70,32 +71,24 @@ listOfSections.forEach( section => {
 
 // Add class 'active' to section when near top of viewport
 // event listener for scroll event
-window.addEventListener('click', function () {
+window.addEventListener('scroll', function() {
   listOfSections.forEach(section => {
-    const bounds = section.getBoundingClientRect();
-    const inViewport = bounds.top >= 0
-    && bounds.left > 0
-    && bounds.right <= window.innerWidth
-    && bounds.bottom <= window.innerHeight;
-
-    console.log(bounds);
-
-    if(section.bounds === inViewport) {
+    const paragraph = section.querySelector('p');
+    const rect = paragraph.getBoundingClientRect();
+    const isInView = rect.top >= 0
+    && rect.left >= 0
+    && rect.right <= window.innerWidth
+    && rect.bottom <= window.innerHeight;
+    if(isInView) {
       section.classList.add('active-section');
-      const anchorList = document.querySelectorAll('a');
-      anchorList.forEach(anchor => {
-      anchor = section.querySelector('a');
-      if(anchor.inViewport) {
-        anchor.classList.add('active-section')
-      } else {
-        anchor.classList.remove('active-section');
-      }
-      })
+      console.log(section.classList);
     } else {
       section.classList.remove('active-section');
+      console.log(section.classList);
     }
   })
 })
+
 
 
 // Scroll to anchor ID using scrollTO event
