@@ -24,7 +24,7 @@
 */
 // variable to hold all the sections
 const navbar = document.querySelector('#navbar__list');
-const listOfSections = document.querySelectorAll('.landing__container');
+const listOfSections = document.querySelectorAll('section');
 
 /**
  * End Global Variables
@@ -41,16 +41,19 @@ const listOfSections = document.querySelectorAll('.landing__container');
 */
 
 // build the nav
+
 // loop through the sections and add each to the navbar
 listOfSections.forEach(section => {
-  const sectId = section.parentElement.getAttribute('id');
-  const sectName = section.parentElement.getAttribute('data-nav')
+  const sectId = section.getAttribute('id');
+  const sectName = section.getAttribute('data-nav')
   const liItem = document.createElement('li');
   const anchor = document.createElement('a');
+  // set anchor text and href
   anchor.text = sectName;
-  anchor.setAttribute('href', '$("#sectId")');
+  anchor.setAttribute('href', `#${sectId}`);
   anchor.classList.add('menu__link');
   navbar.append(liItem);
+  //prevent default action when clicking on anchor
   anchor.addEventListener('click', event => {
     event.preventDefault();
     section.scrollIntoView({behavior: 'smooth'});
@@ -60,30 +63,8 @@ listOfSections.forEach(section => {
 
 // Add class 'active' to section when near top of viewport
 // event listener for scroll event
-const sections = document.querySelectorAll('sections')
 window.addEventListener('scroll', function() {
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 1.0
-  };
-
-  const observer = new IntersectionObserver(callback, options);
-  observer.observe(sections);
-
-  function callback(entries) {
-    const [entry] = entries;
-    sections.forEach(section => {
-      if (entry.isIntersecting) {
-        section.classList.remove('active')
-      }
-    })
-  }
-  
-})
-
-/*
-listOfSections.forEach(section => {
+  listOfSections.forEach(section => {
     const paragraph = section.querySelector('p');
     const rect = paragraph.getBoundingClientRect();
     const isInView = rect.top >= 0
@@ -97,22 +78,18 @@ listOfSections.forEach(section => {
       // iterate through anchors to find correct anchor based on section in viewport
       const aList = navbar.querySelectorAll('a');
       aList.forEach( a => {
-        if(a.href == section.id) {
+        const sectName = section.getAttribute('data-nav');
+        if(a.text == sectName) {
           a.classList.add('active-section');
-          console.log(a.classList);
         } else {
           a.classList.remove('active-section');
-          console.log(a.classList);
         }
       })
     } else {
       section.classList.remove('active-section');
-      console.log(section.classList);
     }
   })
-*/
-
-
+})
 
 // Scroll to anchor ID using scrollTO event
 
