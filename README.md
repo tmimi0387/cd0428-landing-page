@@ -1,19 +1,22 @@
 # Landing Page Project
 
-## Description
+## Table of contents
+- [Description](#description)
+- [Usage](#usage)
+- [Technologies](#technologies)
 
+## Description
 This project was a static version of a Landing Page. I converted this into a dynamic landing page using some of the HTML and CSS supplied by Udacity and added some of my own style elements to it to make it stand out.
 
-## Table of Contents
+## Usage
 
-- [Project Title](#project-title)
-- [Description](#description)
-- [Table of Contents](#table-of-contents)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Development](#development)
-- [Contribute](#contribute)
-- [License](#license)
+### Development
+Want to use this repository? Fork it to use locally on your device.
+- Fork the repo
 
-## Installation
 
+## Technologies
+Project is created with:
+* HTML
+* CSS
+* Node.js(https://nodejs.com)

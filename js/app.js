@@ -47,6 +47,7 @@ listOfSections.forEach(section => {
   const sectId = section.getAttribute('id');
   const sectName = section.getAttribute('data-nav')
   const liItem = document.createElement('li');
+  liItem.innerHTML = <a class ="menu__link" href="`${sectId}`"> sectName</a>
   const anchor = document.createElement('a');
   // set anchor text and href
   anchor.text = sectName;
