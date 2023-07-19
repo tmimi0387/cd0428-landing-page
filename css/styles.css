@@ -226,3 +226,65 @@ section.active-section .landing__container::after {
 		           rotate(-360deg);
 	}
 }
+
+/* Media Styles */
+/* Small Screens */
+@media only screen and (max-width: 400px) {
+    .landing__container {
+        padding: 1.1em;
+    }
+
+    .navbar__menu ul {
+        text-align: center;
+        padding: 0.5em;
+    }
+
+    .navbar__menu .menu__link {
+        padding: 0.25em;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0.75em auto;
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    p {
+        line-height: 1.3em;
+    }
+}
+
+/* Medium Screens */
+@media only screen and (min-width: 401px) and (max-width: 750px) {
+    .landing__container {
+        padding: 1.1em;
+    }
+
+    .navbar__menu ul {
+        text-align: center;
+        padding: 0.5em;
+        
+    }
+
+    .navbar__menu .menu__link {
+        padding: 0.6em;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0.75em auto;
+        font-size: 4em;
+    }
+
+    h2 {
+        font-size: 2.75em;
+    }
+
+    p {
+        line-height: 1.4em;
+    }
+}
