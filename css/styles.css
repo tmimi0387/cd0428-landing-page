@@ -235,8 +235,9 @@ section.active-section .landing__container::after {
     }
 
     .navbar__menu ul {
-        text-align: center;
-        padding: 0.5em;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0.3em;
     }
 
     .navbar__menu .menu__link {
@@ -254,7 +255,8 @@ section.active-section .landing__container::after {
     }
 
     p {
-        line-height: 1.3em;
+        line-height: 1.1em;
+        font-size: 0.9em;
     }
 }
 

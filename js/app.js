@@ -47,18 +47,13 @@ listOfSections.forEach(section => {
   const sectId = section.getAttribute('id');
   const sectName = section.getAttribute('data-nav')
   const liItem = document.createElement('li');
-  const anchor = document.createElement('a');
-  // set anchor text and href
-  anchor.text = sectName;
-  anchor.setAttribute('href', `#${sectId}`);
-  anchor.classList.add('menu__link');
+  liItem.innerHTML += `<a class="menu__link" href="#${sectId}">${sectName}</a>`;
   navbar.append(liItem);
-  //prevent default action when clicking on anchor
-  anchor.addEventListener('click', event => {
-    event.preventDefault();
-    section.scrollIntoView({behavior: 'smooth'});
-  });
-  liItem.append(anchor);
+  // prevent default action when clicking anchor
+  // liItem.addEventListener('click', event => {
+  //   event.preventDefault();
+  //   section.scrollIntoView({behavior: 'smooth'});
+  // });
 })
 
 
