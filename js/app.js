@@ -48,12 +48,12 @@ listOfSections.forEach(section => {
   const sectName = section.getAttribute('data-nav')
   const liItem = document.createElement('li');
   liItem.innerHTML += `<a class="menu__link" href="#${sectId}">${sectName}</a>`;
-  navbar.append(liItem);
+  navbar.appendChild(liItem);
   // prevent default action when clicking anchor
-  // liItem.addEventListener('click', event => {
-  //   event.preventDefault();
-  //   section.scrollIntoView({behavior: 'smooth'});
-  // });
+  liItem.addEventListener('click', event => {
+    event.preventDefault();
+    section.scrollIntoView({behavior: 'smooth'});
+  });
 })
 
 
@@ -88,7 +88,6 @@ window.addEventListener('scroll', function() {
 })
 
 // Scroll to anchor ID using scrollTO event
-
 
 /**
  * End Main Functions
